@@ -33,4 +33,6 @@
         </tbody>
     </table>
 
+    {{ $categories->links() }}
+
 @endsection
