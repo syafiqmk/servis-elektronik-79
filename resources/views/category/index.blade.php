@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <a href="" class="btn btn-primary mb-3"><span data-feather="plus"></span> Add new category</a>
+    <a href="" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Add new category</a>
     
     {{-- Table --}}
     <table class="table">
