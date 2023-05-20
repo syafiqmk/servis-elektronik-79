@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DevController;
 use App\Http\Controllers\GeneralController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,8 @@ Route::get('/dev/dashboard', [DevController::class, 'dashboard']);
 
 // Dashboard Route
 Route::get('/dashboard', [GeneralController::class, 'dashboard'])->name('dashboard');
+
+// Device Category Route
+Route::name('category.')->controller(CategoryController::class)->group(function() {
+    Route::get('/category', 'index')->name('index');
+});
