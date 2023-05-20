@@ -10,5 +10,10 @@ class CategoryController extends Controller
     // Index
     public function index() {
         $categories = DeviceCategory::paginate(5);
+
+        return view('category.index', [
+            'title' => 'Device Category',
+            'categories' => $categories
+        ]);
     }
 }
