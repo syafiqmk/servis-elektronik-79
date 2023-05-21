@@ -40,4 +40,40 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('danger', 'Fail to add new category!');
         }
     }
+
+    // Edit
+    public function edit(DeviceCategory $category) {
+        return view('category.edit', [
+            'title' => 'Edit device category',
+            'category' => $category
+        ]);
+    }
+
+    // Update
+    public function update(Request $request, DeviceCategory $category) {
+        $validate = $request->validate([
+            'category' => 'required'
+        ]);
+
+        $update = $category->update([
+            'category' => ucwords($validate['category'])
+        ]);
+
+        if ($update) {
+            return redirect()->route('category.index')->with('success', 'Category updated successfully!');
+        } else {
+            return redirect()->route('category.index')->with('danger', 'Fail to update category!');
+        }
+    }
+
+    // Delete
+    public function destroy(DeviceCategory $category) {
+        $delete = $category->delete();
+
+        if($delete) {
+            return redirect()->route('category.index')->with('success', 'Category deleted successfully!');
+        } else {
+            return redirect()->route('category.index')->with('danger', "Fail to delete category!");
+        }
+    }
 }

@@ -30,4 +30,7 @@ Route::name('category.')->controller(CategoryController::class)->group(function(
     Route::get('/category', 'index')->name('index');
     Route::get('/category/create', 'create')->name('create');
     Route::post('/category/create', 'store')->name('store');
+    Route::get('/category/edit/{category}', 'edit')->name('edit');
+    Route::put('/category/edit/{category}/update', 'update')->name('update');
+    Route::delete('/category/delete/{category}', 'destroy')->name('delete');
 });

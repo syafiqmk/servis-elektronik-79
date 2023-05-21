@@ -27,7 +27,14 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->category }}</td>
                         <td>
-                            <a href="" class="btn btn-success"><span data-feather="edit"></span> Edit</a>
+                            <form action="{{ route('category.delete', $data->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <div class="btn-group">
+                                    <a href="{{ route('category.edit', $data->id) }}" class="btn btn-success"><span data-feather="edit"></span> Edit</a>
+                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+                                </div>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
