@@ -45,4 +45,12 @@ class UserController extends Controller
             return redirect()->route('user.index')->with('danger', 'Account fail to create!');
         }
     }
+
+    // Edit
+    public function edit(User $user) {
+        return view('user.edit', [
+            'title' => 'Edit user account',
+            'user' => $user
+        ]);
+    }
 }

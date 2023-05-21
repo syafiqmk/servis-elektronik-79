@@ -41,4 +41,5 @@ Route::name('user.')->controller(UserController::class)->group(function() {
     Route::get('/user', 'index')->name('index');
     Route::get('/user/create', 'create')->name('create');
     Route::post('/user/create', 'store')->name('store');
+    Route::get('/user/edit/{user}', 'edit')->name('edit');
 });

@@ -30,7 +30,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <div class="button-group">
-                                    <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                    <a href="{{ route('user.edit', $data->id) }}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                                     <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
                                 </div>
                             </form>
