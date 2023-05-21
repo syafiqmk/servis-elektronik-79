@@ -13,6 +13,8 @@
     <script src="https://unpkg.com/feather-icons"></script>
     {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/c8ae339e7b.js" crossorigin="anonymous"></script>
+    {{-- sweetalert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- TinyMce --}}
     <script src="https://cdn.tiny.cloud/1/36rw5ypvwnxo4vmew1ajhrf3zl3j8wlomjwgkk6smign4cx2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     {{-- dashboard --}}
