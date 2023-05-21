@@ -23,4 +23,26 @@ class UserController extends Controller
             'title' => 'Create new user'
         ]);
     }
+
+    // Store
+    public function store(Request $request) {
+        $validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:5'
+        ]);
+
+        $create = User::create([
+            'name' => ucwords($validate['name']),
+            'email' => $validate['email'],
+            'password' => bcrypt($validate['password']),
+            'role' => 'user'
+        ]);
+
+        if($create) {
+            return redirect()->route('user.index')->with('success', 'Account created successfully!');
+        } else {
+            return redirect()->route('user.index')->with('danger', 'Account fail to create!');
+        }
+    }
 }

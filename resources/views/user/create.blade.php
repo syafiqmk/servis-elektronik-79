@@ -8,7 +8,9 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-7 col-sm-12">
-                <form action="" method="post">
+                <form action="{{ route('user.store') }}" method="post">
+                    @csrf
+                    
                     {{-- name input --}}
                     <div class="mb-3">
                         <label>Name</label>

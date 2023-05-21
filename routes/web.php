@@ -40,4 +40,5 @@ Route::name('category.')->controller(CategoryController::class)->group(function(
 Route::name('user.')->controller(UserController::class)->group(function() {
     Route::get('/user', 'index')->name('index');
     Route::get('/user/create', 'create')->name('create');
+    Route::post('/user/create', 'store')->name('store');
 });
