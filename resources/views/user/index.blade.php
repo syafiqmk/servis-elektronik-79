@@ -24,10 +24,22 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->name }}</td>
-                        <td>{{  }}</td>
+                        <td>{{ $data->email }}</td>
+                        <td>
+                            <form action="" method="post" id="delete">
+                                @csrf
+                                @method('DELETE')
+                                <div class="button-group">
+                                    <a href="" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             @endif
         </tbody>
     </table>
+
+    {{ $users->links() }}
 @endsection
