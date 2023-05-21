@@ -29,4 +29,5 @@ Route::get('/dashboard', [GeneralController::class, 'dashboard'])->name('dashboa
 Route::name('category.')->controller(CategoryController::class)->group(function() {
     Route::get('/category', 'index')->name('index');
     Route::get('/category/create', 'create')->name('create');
+    Route::post('/category/create', 'store')->name('store');
 });

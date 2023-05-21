@@ -7,7 +7,7 @@
 @section('content')
     <div class="row d-flex justify-content-center">
         <div class="col-md-6 col-sm-12">
-            <form action="" method="post">
+            <form action="{{ route('category.store') }}" method="post">
                 @csrf
                 {{-- Category input --}}
                 <div class="mb-3">

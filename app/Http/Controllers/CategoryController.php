@@ -23,4 +23,21 @@ class CategoryController extends Controller
             'title' => 'Add new category'
         ]);
     }
+
+    // Store
+    public function store(Request $request) {
+        $validate = $request->validate([
+            'category' => 'required'
+        ]);
+
+        $create = DeviceCategory::create([
+            'category' => ucwords($validate['category'])
+        ]);
+
+        if($create) {
+            return redirect()->route('category.index')->with('success', 'New category added successfully!');
+        } else {
+            return redirect()->route('category.index')->with('danger', 'Fail to add new category!');
+        }
+    }
 }
