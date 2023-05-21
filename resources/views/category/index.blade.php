@@ -46,7 +46,7 @@
 
     <script>
         $('#delete').submit(function(e) {
-            $form = this;
+            let form = this;
             e.preventDefault();
 
             Swal.fire({
