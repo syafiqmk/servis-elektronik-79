@@ -27,7 +27,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->category }}</td>
                         <td>
-                            <form action="{{ route('category.delete', $data->id) }}" method="post">
+                            <form action="{{ route('category.delete', $data->id) }}" method="post" id="delete">
                                 @csrf
                                 @method('DELETE')
                                 <div class="btn-group">
@@ -43,5 +43,24 @@
     </table>
 
     {{ $categories->links() }}
+
+    <script>
+        $('#delete').submit(function(e) {
+            $form = this;
+            e.preventDefault();
+
+            Swal.fire({
+                icon: 'warning',
+                text: 'Delete device category?',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Delete',
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        })
+    </script>
 
 @endsection
