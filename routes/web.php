@@ -28,4 +28,5 @@ Route::get('/dashboard', [GeneralController::class, 'dashboard'])->name('dashboa
 // Device Category Route
 Route::name('category.')->controller(CategoryController::class)->group(function() {
     Route::get('/category', 'index')->name('index');
+    Route::get('/category/create', 'create')->name('create');
 });

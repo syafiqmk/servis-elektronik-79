@@ -16,4 +16,11 @@ class CategoryController extends Controller
             'categories' => $categories
         ]);
     }
+
+    // Create
+    public function create() {
+        return view('category.create', [
+            'title' => 'Add new category'
+        ]);
+    }
 }
