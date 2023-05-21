@@ -5,7 +5,7 @@
 @endsection
     
 @section('content')
-    <a href="" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Create new account</a>
+    <a href="{{ route('user.create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Create new account</a>
     
     <table class="table">
         <thead>

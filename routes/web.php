@@ -39,4 +39,5 @@ Route::name('category.')->controller(CategoryController::class)->group(function(
 // User Account Route
 Route::name('user.')->controller(UserController::class)->group(function() {
     Route::get('/user', 'index')->name('index');
+    Route::get('/user/create', 'create')->name('create');
 });
