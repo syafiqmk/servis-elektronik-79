@@ -9,6 +9,8 @@ class Transaction extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // Transaction to Device Relation
     // Many Transactions belongs to One Device
     public function device() {

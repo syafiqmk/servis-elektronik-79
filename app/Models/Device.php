@@ -9,6 +9,8 @@ class Device extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // Device to DeviceCategory Relations
     // Many Device belongs to One Device Category
     public function category() {

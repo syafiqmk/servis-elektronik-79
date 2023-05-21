@@ -9,6 +9,8 @@ class DeviceCategory extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     // DeviceCategory to Device Relation
     // DeviceCategory can have many Device
     public function device() {
