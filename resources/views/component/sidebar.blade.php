@@ -34,10 +34,16 @@
             <span>Device</span>
         </h6>
         <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('device/create') ? 'active' : '' }}" href="{{ route('device.create') }}">
-                <span data-feather="file-text" class="align-text-bottom"></span>
+            <li class="nav-item text-center">
+                <a class="btn btn-primary" href="{{ route('device.create') }}">
+                <i class="fa-solid fa-plus"></i>
                 Add new device
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('device*') ? 'active' : '' }}" href="{{ route('device.index') }}">
+                <i class="fa-solid fa-desktop"></i>
+                All Device
                 </a>
             </li>
         </ul>
