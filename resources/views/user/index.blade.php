@@ -42,4 +42,23 @@
     </table>
 
     {{ $users->links() }}
+
+    <script>
+        $('#delete').submit(function(e) {
+            let form = this;
+            e.preventDefault();
+
+            Swal.fire({
+                icon: 'warning',
+                text: 'Delete device user account?',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Delete',
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        })
+    </script>
 @endsection
