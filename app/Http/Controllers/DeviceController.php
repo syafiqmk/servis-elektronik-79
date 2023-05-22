@@ -37,7 +37,11 @@ class DeviceController extends Controller
             'detail' => 'required'
         ]);
 
-        $file = $validate['image'];
+        if(empty($validate['image'])) {
+            $file = NULL;
+        } else {
+            $file = $validate['image'];
+        }
         $file_name = NULL;
 
         if($request->file('image')) {
