@@ -35,7 +35,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('category*') ? 'active' : '' }}" href="#">
+                <a class="nav-link {{ Request::is('device/create') ? 'active' : '' }}" href="{{ route('device.create') }}">
                 <span data-feather="file-text" class="align-text-bottom"></span>
                 Add new device
                 </a>

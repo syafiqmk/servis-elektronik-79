@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DevController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -45,4 +46,9 @@ Route::name('user.')->controller(UserController::class)->group(function() {
     Route::put('/user/edit/{user}/detail', 'update_detail')->name('updateDetail');
     Route::put('/user/edit/{user}/password', 'update_password')->name('updatePassword');
     Route::delete('/user/delete{user}', 'destroy')->name('delete');
+});
+
+// Device Route
+Route::name('device.')->controller(DeviceController::class)->group(function() {
+    Route::get('/device/create', 'create')->name('create');
 });
