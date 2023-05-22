@@ -5,7 +5,7 @@
 @endsection
 
 @section('side_title')
-    <form action="" method="post" id="delete">
+    <form action="{{ route('user.delete', $user->id) }}" method="post" id="delete">
         @csrf
         @method('DELETE')
         <div class="btn-group">

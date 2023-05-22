@@ -26,7 +26,7 @@
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
                         <td>
-                            <form action="" method="post" id="delete">
+                            <form action="{{ route('user.delete', $data->id) }}" method="post" id="delete">
                                 @csrf
                                 @method('DELETE')
                                 <div class="button-group">

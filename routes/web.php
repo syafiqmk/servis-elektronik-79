@@ -44,4 +44,5 @@ Route::name('user.')->controller(UserController::class)->group(function() {
     Route::get('/user/edit/{user}', 'edit')->name('edit');
     Route::put('/user/edit/{user}/detail', 'update_detail')->name('updateDetail');
     Route::put('/user/edit/{user}/password', 'update_password')->name('updatePassword');
+    Route::delete('/user/delete{user}', 'destroy')->name('delete');
 });

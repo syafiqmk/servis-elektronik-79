@@ -89,4 +89,15 @@ class UserController extends Controller
             return redirect()->route('user.edit', $user->id)->with('danger', 'Fail to update password!');
         }
     }
+
+    // Delete
+    public function destroy(User $user) {
+        $delete = $user->delete();
+
+        if($delete) {
+            return redirect()->route('user.index')->with('success', 'Account deleted successfully!');
+        } else {
+            return redirect()->back()->with('danger', 'Fail to delete account!');
+        }
+    }
 }
