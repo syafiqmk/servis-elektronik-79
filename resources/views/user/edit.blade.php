@@ -4,6 +4,17 @@
     Edit user account
 @endsection
 
+@section('side_title')
+    <form action="" method="post">
+        @csrf
+        @method('DELETE')
+        <div class="btn-group">
+            <a href="{{ route('user.index') }}" class="btn btn-success"><i class="fa-solid fa-chevron-left"></i> Back</a>
+            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+        </div>
+    </form>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row d-flex justify-content-center">
