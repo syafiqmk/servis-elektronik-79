@@ -51,4 +51,5 @@ Route::name('user.')->controller(UserController::class)->group(function() {
 // Device Route
 Route::name('device.')->controller(DeviceController::class)->group(function() {
     Route::get('/device/create', 'create')->name('create');
+    Route::post('/device/create', 'store')->name('store');
 });

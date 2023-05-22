@@ -18,8 +18,8 @@ class DeviceController extends Controller
         ]);
     }
 
-    // Submit
-    public function submit(Request $request) {
+    // Store
+    public function store(Request $request) {
         $validate = $request->validate([
             'image' => 'image|file',
             'category' => 'required',
