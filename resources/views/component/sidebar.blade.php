@@ -10,6 +10,7 @@
         
         </ul>
 
+        {{-- Master Data --}}
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
             <span>Master Data</span>
         </h6>
@@ -28,6 +29,18 @@
             </li>
         </ul>
 
+        {{-- Device --}}
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+            <span>Device</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('category*') ? 'active' : '' }}" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Add new device
+                </a>
+            </li>
+        </ul>
 
         {{-- sidebar list with title --}}
         {{-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
@@ -35,7 +48,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Request::is('') ? 'active' : '' }}" href="#">
                 <span data-feather="file-text" class="align-text-bottom"></span>
                 List Item
                 </a>
