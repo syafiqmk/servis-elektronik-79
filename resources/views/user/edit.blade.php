@@ -11,7 +11,7 @@
 
                 <h4>User Details</h4>
                 {{-- user details --}}
-                <form action="" method="post">
+                <form action="{{ route('user.updateDetail', $user->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     {{-- name input --}}
@@ -44,7 +44,7 @@
 
                 {{-- user password --}}
                 <h4>User Password</h4>
-                <form action="" method="post">
+                <form action="{{ route('user.updatePassword', $user->id) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">

@@ -42,4 +42,6 @@ Route::name('user.')->controller(UserController::class)->group(function() {
     Route::get('/user/create', 'create')->name('create');
     Route::post('/user/create', 'store')->name('store');
     Route::get('/user/edit/{user}', 'edit')->name('edit');
+    Route::put('/user/edit/{user}/detail', 'update_detail')->name('updateDetail');
+    Route::put('/user/edit/{user}/password', 'update_password')->name('updatePassword');
 });

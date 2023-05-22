@@ -53,4 +53,40 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    // Update user details
+    public function update_detail(Request $request, User $user) {
+        $validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email'
+        ]);
+
+        $update = $user->update([
+            'name' => ucwords($validate['name']),
+            'email' => $validate['email']
+        ]);
+
+        if($update) {
+            return redirect()->route('user.edit', $user->id)->with('success', 'Account details updated successfully!');
+        } else {
+            return redirect()->route('user.edit', $user->id)->with('danger', 'Fail to update account details!');
+        }
+    }
+
+    // Update password
+    public function update_password(Request $request, User $user) {
+        $validate = $request->validate([
+            'password' => 'required|min:5'
+        ]);
+
+        $update = $user->update([
+            'password' => bcrypt($validate['password'])
+        ]);
+
+        if($update) {
+            return redirect()->route('user.edit', $user->id)->with('success', 'Password updated successfully!');
+        } else {
+            return redirect()->route('user.edit', $user->id)->with('danger', 'Fail to update password!');
+        }
+    }
 }
