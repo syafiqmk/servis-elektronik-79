@@ -8,6 +8,16 @@ use App\Models\Device;
 
 class DeviceController extends Controller
 {
+    // Index
+    public function index() {
+        $devices = Device::orderBy('id', 'DESC')->paginate(9);
+
+        return view('device.index', [
+            'title' => 'Devices',
+            'devices' => $devices
+        ]);
+    }
+
     // Create
     public function create() {
         $categories = DeviceCategory::all();
@@ -21,9 +31,9 @@ class DeviceController extends Controller
     // Store
     public function store(Request $request) {
         $validate = $request->validate([
-            'image' => 'image|file',
+            'image' => 'image|file|nullable',
             'category' => 'required',
-            'phone' => 'numeric',
+            'phone' => 'numeric|nullable',
             'detail' => 'required'
         ]);
 
