@@ -20,6 +20,12 @@
                 Device Category
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('user*') ? 'active' : '' }}" href="{{ route('user.index') }}">
+                <i class="fa-solid fa-people-group"></i>
+                User Account
+                </a>
+            </li>
         </ul>
 
 
