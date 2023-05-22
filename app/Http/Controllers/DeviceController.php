@@ -37,16 +37,18 @@ class DeviceController extends Controller
             'detail' => 'required'
         ]);
 
+        $file = $validate['image'];
+        $file_name = NULL;
+
         if($request->file('image')) {
-            $validate['image'] = $request->file('image')->store('images/device');
-        } else {
-            $validate['image'] = NULL;
+            $file_name = $file->getClientOriginalName();
+            $file->move('image/device', $file_name);
         }
 
         $create = Device::create([
             'phone_number' => $validate['phone'],
             'detail' => $validate['detail'],
-            'image' => $validate['image'],
+            'image' => $file_name,
             'status' => 'Baru',
             'category_id' => $validate['category'],
         ]);
