@@ -28,7 +28,7 @@
                     {{-- name input --}}
                     <div class="mb-3">
                         <label for="">Name</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" autocomplete="off" value="@if($errors->has('name')) {{ old('name') }} @else {{ $user->name }} @endif">
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Name" autocomplete="off" value="@if($errors->has('name')) {{ old('name') }} @else{{ $user->name }}@endif">
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}

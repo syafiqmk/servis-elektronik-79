@@ -13,7 +13,7 @@
                 {{-- Category input --}}
                 <div class="mb-3">
                     <label for="">Category</label>
-                    <input type="text" name="category" class="form-control @error('category') is-invalid @enderror" placeholder="Category" autocomplete="off" value="@if($errors->has('category')) {{ old('category') }} @else {{ $category->category }} @endif">
+                    <input type="text" name="category" class="form-control @error('category') is-invalid @enderror" placeholder="Category" autocomplete="off" value="@if($errors->has('category')){{ old('category') }}@else{{ $category->category }}@endif">
                     @error('category')
                         <div class="invalid-feedback">
                             {{ $message }}
