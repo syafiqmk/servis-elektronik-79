@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-sm-12">
-                <form action="{{ route('device.store') }}" method="post">
+                <form action="{{ route('device.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     {{-- image --}}
