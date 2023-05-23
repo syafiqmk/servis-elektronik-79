@@ -53,4 +53,5 @@ Route::name('device.')->controller(DeviceController::class)->group(function() {
     Route::get('/device', 'index')->name('index');
     Route::get('/device/create', 'create')->name('create');
     Route::post('/device/create', 'store')->name('store');
+    Route::get('/device/{device}', 'show')->name('show');
 });

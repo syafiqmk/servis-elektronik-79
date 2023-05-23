@@ -63,4 +63,12 @@ class DeviceController extends Controller
             return redirect()->route('device.index')->with('danger', 'Fail to add new device!');
         }
     }
+
+    // Detail
+    public function show(Device $device) {
+        return view('device.show', [
+            'title' => 'Device detail',
+            'device' => $device
+        ]);
+    }
 }
