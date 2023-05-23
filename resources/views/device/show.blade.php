@@ -53,7 +53,7 @@
                     <b>Price</b>
                     <p>Rp. {{ number_format($device->price, 2, ',', '.') }}</p>
 
-                    <form action="" method="post">
+                    <form action="{{ route('device.updatePrice', $device->id) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="input-group">

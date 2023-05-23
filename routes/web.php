@@ -54,4 +54,5 @@ Route::name('device.')->controller(DeviceController::class)->group(function() {
     Route::get('/device/create', 'create')->name('create');
     Route::post('/device/create', 'store')->name('store');
     Route::get('/device/{device}', 'show')->name('show');
+    Route::put('/device/{device}/price', 'price_update')->name('updatePrice');
 });

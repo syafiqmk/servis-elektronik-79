@@ -75,7 +75,7 @@ class DeviceController extends Controller
     // Update price
     public function price_update(Request $request, Device $device) {
         $validate = $request->validate([
-            'price' => 'required|number'
+            'price' => 'required|numeric'
         ]);
 
         $update = $device->update([
