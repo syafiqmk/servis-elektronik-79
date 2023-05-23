@@ -57,7 +57,7 @@
 
                         {{-- link --}}
                         <div class="text-end">
-                            <a href="" class="btn btn-primary"><i class="fa-solid fa-book"></i> Detail</a>
+                            <a href="{{ route('device.show', $data->id) }}" class="btn btn-primary"><i class="fa-solid fa-book"></i> Detail</a>
                         </div>
                         {{-- end of link --}}
                     </div>
