@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DeviceCategory;
 use App\Models\Device;
+use Illuminate\Support\Facades\File;
 
 class DeviceController extends Controller
 {
@@ -86,6 +87,25 @@ class DeviceController extends Controller
             return redirect()->route('device.show', $device->id)->with('success', 'Price updated successfully!');
         } else {
             return redirect()->route('device.show', $device->id)->with('danger', 'Fail to update price!');
+        }
+    }
+
+    // Delete
+    public function destroy(Device $device) {
+        if(!empty($device->image)) {
+            if(File::delete(public_path('image/device/'.$device->image)) && $device->delete()) {
+                return redirect()->route('device.index')->with('success', 'Device deleted successfully!');
+            } else {
+                return redirect()->route('device.show', $device->id)->with('danger', 'Fail to delete device!');
+            }
+        } else {
+            $delete = $device->delete();
+
+            if($delete) {
+                return redirect()->route('device.index')->with('success', 'Device deleted successfully!');
+            } else {
+                return redirect()->route('device.show', $device->id)->with('danger', 'Fail to delete device!');
+            }
         }
     }
 }

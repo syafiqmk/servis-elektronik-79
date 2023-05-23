@@ -4,6 +4,17 @@
     Device detail
 @endsection
 
+@section('side_title')
+    <form action="{{ route('device.destroy', $device->id) }}" method="post" id="delete">
+        @csrf
+        @method('DELETE')
+        <div class="btn-group">
+            <a href="{{ route('device.index') }}" class="btn btn-success"><i class="fa-solid fa-chevron-left"></i> Back</a>
+            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+        </div>
+    </form>
+@endsection
+
 @section('content')
     <div class="container">
 
@@ -77,4 +88,26 @@
         </div>
         {{-- end of device detail --}}
     </div>
+
+
+
+    {{-- script --}}
+    <script>
+        $('#delete').submit(function(e) {
+            let form = this;
+            e.preventDefault();
+
+            Swal.fire({
+                icon: 'warning',
+                text: 'Delete device?',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Delete',
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        })
+    </script>
 @endsection
