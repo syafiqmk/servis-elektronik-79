@@ -71,4 +71,21 @@ class DeviceController extends Controller
             'device' => $device
         ]);
     }
+
+    // Update price
+    public function price_update(Request $request, Device $device) {
+        $validate = $request->validate([
+            'price' => 'required|number'
+        ]);
+
+        $update = $device->update([
+            'price' => $validate['price']
+        ]);
+
+        if($update) {
+            return redirect()->route('device.show', $device->id)->with('success', 'Price updated successfully!');
+        } else {
+            return redirect()->route('device.show', $device->id)->with('danger', 'Fail to update price!');
+        }
+    }
 }
