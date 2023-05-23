@@ -13,7 +13,7 @@
         <div class="row">
             @foreach ($devices as $data)
             <div class="col-md-4 col-sm-6 mb-3">
-                <div class="card">
+                <div class="card h-100">
                     {{-- card header --}}
                     <div class="card-header">
                         {{-- status & category --}}
@@ -40,7 +40,7 @@
                     {{-- end of car header --}}
 
                     {{-- image --}}
-                    <img src="{{ (empty($data->image)) ? asset('image').'/No-Image.png' : asset('image/device').'/'.$data->image }}" class="card-img-top" height="200">
+                    <img src="{{ (empty($data->image)) ? asset('image').'/No-Image.png' : asset('image/device').'/'.$data->image }}" class="h-50">
                     {{-- end of image --}}
 
                     {{-- card body --}}
