@@ -147,5 +147,23 @@
         });
     </script>
     <script src="/js/dashboard.js"></script>
+    <script>
+        $('#logout').submit(function(e) {
+            let form = this;
+            e.preventDefault();
+
+            Swal.fire({
+                icon: 'question',
+                text: 'Do you want to Logout?',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Logout',
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        })
+    </script>
 </body>
 </html>

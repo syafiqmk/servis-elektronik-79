@@ -2,7 +2,7 @@
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="#">
+                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('dashboard') }}">
                 <i class="fa-solid fa-house"></i>
                 Dashboard
                 </a>
@@ -34,8 +34,8 @@
             <span>Device</span>
         </h6>
         <ul class="nav flex-column mb-2">
-            <li class="nav-item text-center">
-                <a class="btn btn-primary" href="{{ route('device.create') }}">
+            <li class="nav-item">
+                <a class="nav-link text-success" href="{{ route('device.create') }}">
                 <i class="fa-solid fa-plus"></i>
                 Add new device
                 </a>
@@ -45,6 +45,26 @@
                 <i class="fa-solid fa-desktop"></i>
                 All Device
                 </a>
+            </li>
+        </ul>
+
+        {{-- Account --}}
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+            <span>Account</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                Settings
+                </a>
+            </li>
+            <li class="nav-item">
+                <form action="{{ route('auth.logout') }}" method="post" id="logout">
+                    @csrf
+
+                    <button type="submit" class="nav-link text-danger"><i class="fa-solid fa-door-open"></i> Logout</button>
+                </form>
             </li>
         </ul>
 
