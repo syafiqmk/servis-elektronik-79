@@ -91,9 +91,61 @@
 
 
         {{-- device transaction --}}
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <h4>Transaction</h4>
-            
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-sm-12">
+                    @foreach ($transactions as $data)
+                        <div class="card mb-3">
+                            {{-- card header --}}
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 fs-6">
+                                        @switch($data->type)
+                                            @case('Proses')
+                                                <span class="badge bg-warning">{{ $data->type }}</span>
+                                                @break
+                                            @case('Belum Diambil')
+                                                <span class="badge bg-info">{{ $data->type }}</span>
+                                                @break
+                                            @case('Sudah Diambil')
+                                                <span class="badge bg-success">{{ $data->type }}</span>
+                                                @break
+                                            @case('Batal')
+                                                <span class="badge bg-danger">{{ $data->type }}</span>
+                                                @break
+                                        @endswitch
+                                        By. {{ $data->user->name }} - {{ $data->created_at->diffForHumans() }}
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12 text-end">
+                                        <form action="" method="post" id="del-tr">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- end of card header --}}
+        
+                            <div class="card-body">
+                                @if (!empty($data->image))
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('image/transaction').'/'.$data->image }}" class="img-thumbnail w-50" >
+                                </div>
+                                @endif
+        
+                                @if (!empty($data->detail))
+                                    {!! $data->detail !!}
+                                @else
+                                    <p>No details.</p>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
         {{-- end of device transaction --}}
     </div>
@@ -109,6 +161,23 @@
             Swal.fire({
                 icon: 'warning',
                 text: 'Delete device?',
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Delete',
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    form.submit();
+                }
+            })
+        })
+
+        $('#del-tr').submit(function(e) {
+            let form = this;
+            e.preventDefault();
+
+            Swal.fire({
+                icon: 'warning',
+                text: 'Delete transaction?',
                 showCancelButton: true,
                 cancelButtonText: 'Cancel',
                 confirmButtonText: 'Delete',
