@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DevController;
 use App\Http\Controllers\DeviceController;
@@ -20,10 +21,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // HomePage Route
-Route::get('/', [GeneralController::class, 'home']);
+Route::get('/', [GeneralController::class, 'home'])->name('home');
 
 // Development Route
 Route::get('/dev/dashboard', [DevController::class, 'dashboard']);
+
+// Auth route
+Route::name('auth.')->controller(AuthController::class)->group(function() {
+    Route::middleware('guest')->group(function() {
+        Route::get('/login', 'login')->name('login');
+        Route::post('/login', 'loginAttempt')->name('attempt');
+    });
+    Route::post('/logout', 'logout')->name('logout');
+});
 
 // Dashboard Route
 Route::get('/dashboard', [GeneralController::class, 'dashboard'])->name('dashboard');
