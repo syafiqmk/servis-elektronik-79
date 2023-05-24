@@ -63,4 +63,5 @@ Route::name('device.')->controller(DeviceController::class)->group(function() {
 Route::name('transaction.')->controller(TransactionController::class)->group(function() {
     Route::get('/transaction/{device}', 'create')->name('create');
     Route::post('/transaction/{device}', 'store')->name('store');
+    Route::delete('/transaction/{transaction}/{device}/delete', 'destroy')->name('destroy');
 });

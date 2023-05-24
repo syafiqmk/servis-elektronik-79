@@ -56,4 +56,31 @@ class TransactionController extends Controller
             return redirect()->route('device.show', $device->id)->with('danger', 'Fail to add new transaction!');
         }
     }
+
+    // Destroy
+    public function destroy(Transaction $transaction, Device $device) {
+        $delete = $transaction->delete();
+
+        if($delete) {
+            $new_transaction = Transaction::where('device_id', '=', $device->id)->latest()->first();
+            
+            if(empty($new_transaction)) {
+                $type = "Baru";
+            } else {
+                $type = $new_transaction->type;
+            }
+
+            $update = $device->update([
+                'status' => $type
+            ]);
+
+            if($update) {
+                return redirect()->route('device.show', $device->id)->with('success', 'Transaction deleted successfully!');
+            } else {
+                return redirect()->route('device.show', $device->id)->with('danger', 'Fail to delete transaction!');
+            }
+        } else {
+            return redirect()->route('device.show', $device->id)->with('danger', 'Fail to delete transaction!');
+        }
+    }
 }

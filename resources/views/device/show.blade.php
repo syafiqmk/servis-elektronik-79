@@ -119,7 +119,7 @@
                                     </div>
 
                                     <div class="col-md-6 col-sm-12 text-end">
-                                        <form action="" method="post" id="del-tr">
+                                        <form action="{{ route('transaction.destroy', ['transaction' => $data->id, 'device' => $device->id]) }}" method="post" id="del-tr">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
