@@ -60,9 +60,9 @@ class DeviceController extends Controller
         ]);
 
         if($create) {
-            return redirect()->route('device.index')->with('success', 'Device added succesfully!');
+            return redirect()->route('device.show', $create->id)->with('success', 'Device added succesfully!');
         } else {
-            return redirect()->route('device.index')->with('danger', 'Fail to add new device!');
+            return redirect()->route('device.show', $create->id)->with('danger', 'Fail to add new device!');
         }
     }
 
