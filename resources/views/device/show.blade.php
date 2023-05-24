@@ -10,7 +10,7 @@
         @method('DELETE')
         <div class="btn-group">
             <a href="{{ route('device.index') }}" class="btn btn-success"><i class="fa-solid fa-chevron-left"></i> Back</a>
-            <a href="" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New transaction</a>
+            <a href="{{ route('transaction.create', $device->id) }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New transaction</a>
             <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
         </div>
     </form>

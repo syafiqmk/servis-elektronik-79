@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DevController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,9 @@ Route::name('device.')->controller(DeviceController::class)->group(function() {
     Route::get('/device/{device}', 'show')->name('show');
     Route::put('/device/{device}/price', 'price_update')->name('updatePrice');
     Route::delete('/device/{device}/delete', 'destroy')->name('destroy');
+});
+
+// Transaction Route
+Route::name('transaction.')->controller(TransactionController::class)->group(function() {
+    Route::get('/transaction/{device}', 'create')->name('create');
 });
