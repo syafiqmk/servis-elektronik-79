@@ -16,6 +16,7 @@ return new class extends Migration
             $table->enum('type', ['Proses', 'Belum Diambil', 'Sudah Diambil', 'Batal']);
             $table->text('detail')->nullable();
             $table->text('image')->nullable();
+            $table->foreignId('device_id')->constrained('devices');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

@@ -42,7 +42,8 @@ class TransactionController extends Controller
             'type' => $validate['type'],
             'detail' => $validate['detail'],
             'image' => $file_name,
-            'user_id' => '3'
+            'device_id' => $device->id,
+            'user_id' => '1'
         ]);
 
         $update = $device->update([

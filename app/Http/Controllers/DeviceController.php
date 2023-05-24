@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DeviceCategory;
 use App\Models\Device;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\File;
 
 class DeviceController extends Controller
@@ -69,7 +70,8 @@ class DeviceController extends Controller
     public function show(Device $device) {
         return view('device.show', [
             'title' => 'Device detail',
-            'device' => $device
+            'device' => $device,
+            'transactions' => Transaction::where('device_id', '=', $device->id)->orderBy('id', 'DESC')->paginate(5)
         ]);
     }
 

@@ -93,6 +93,7 @@
         {{-- device transaction --}}
         <div class="row">
             <h4>Transaction</h4>
+            
         </div>
         {{-- end of device transaction --}}
     </div>
