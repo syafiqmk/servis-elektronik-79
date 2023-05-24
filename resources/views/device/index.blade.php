@@ -10,6 +10,7 @@
 
 @section('content')
     <div class="container">
+        @if ($devices->count() != 0)
         <div class="row">
             @foreach ($devices as $data)
             <div class="col-md-4 col-sm-6 mb-3">
@@ -66,5 +67,9 @@
             </div>
             @endforeach
         </div>
+        {{ $devices->links() }}
+        @else
+            <p>No entries found!</p>
+        @endif
     </div>
 @endsection

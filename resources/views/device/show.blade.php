@@ -91,6 +91,7 @@
 
 
         {{-- device transaction --}}
+        @if ($transactions->count() != 0)
         <div class="row d-flex justify-content-center">
             <h4>Transaction</h4>
             <div class="row d-flex justify-content-center">
@@ -147,6 +148,7 @@
                 </div>
             </div>
         </div>
+        @endif
         {{-- end of device transaction --}}
     </div>
 
