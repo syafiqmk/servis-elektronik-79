@@ -59,6 +59,21 @@
                 <div class="mb-3">
                     <b>Phone number</b>
                     <p>{{ (empty($device->phone_number)) ? '-' : $device->phone_number }}</p>
+
+                    <form action="{{ route('device.updatePhone', $device->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="input-group">
+                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" autocomplete="off" value="{{ old('phone') }}">
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                        </div>
+                        @error('phone')
+                            <div class="invalid-feedback mb-2">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </form>
                 </div>
 
                 <div class="mb-3">

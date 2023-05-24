@@ -92,6 +92,23 @@ class DeviceController extends Controller
         }
     }
 
+    // Update phone number
+    public function phone_update(Request $request, Device $device) {
+        $validate = $request->validate([
+            'phone' => 'required|numeric'
+        ]);
+
+        $update = $device->update([
+            'phone_number' => $validate['phone']
+        ]);
+
+        if($update) {
+            return redirect()->route('device.show', $device->id)->with('success', 'Phone number updated successfully!');
+        } else {
+            return redirect()->route('device.show', $device->id)->with('danger', 'Fail to update phone number!');
+        }
+    }
+
     // Delete
     public function destroy(Device $device) {
         if(!empty($device->image)) {
