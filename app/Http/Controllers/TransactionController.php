@@ -61,7 +61,13 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction, Device $device) {
         $delete = $transaction->delete();
 
-        if($delete) {
+        if(!empty($transaction->image)) {
+            $del_img = File::delete(public_path('image/transaction/'.$transaction->image));
+        } else {
+            $del_img = true;
+        }
+
+        if($delete && $del_img) {
             $new_transaction = Transaction::where('device_id', '=', $device->id)->latest()->first();
             
             if(empty($new_transaction)) {
