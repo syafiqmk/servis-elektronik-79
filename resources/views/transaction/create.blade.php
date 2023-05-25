@@ -46,7 +46,7 @@
 
                     {{-- detail input --}}
                     <div class="mb-3">
-                        <label for="">Detail<span class="text-danger">*</span></label>
+                        <label for="">Detail</label>
                         <textarea name="detail">{{ old('detail') }}</textarea>
                     </div>
                     {{-- end of detail input --}}

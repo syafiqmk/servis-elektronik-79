@@ -111,6 +111,17 @@ class DeviceController extends Controller
 
     // Delete
     public function destroy(Device $device) {
+        $transactions = Transaction::where('device_id', '=', $device->id)->get();
+
+        if($transactions->count() != 0) {
+            foreach ($transactions as $item) {
+                if($item->image != NULL) {
+                    File::delete(public_path('image/transaction/'.$item->image));
+                }
+                $item->delete();
+            }
+        }
+
         if(!empty($device->image)) {
             if(File::delete(public_path('image/device/'.$device->image)) && $device->delete()) {
                 return redirect()->route('device.index')->with('success', 'Device deleted successfully!');
@@ -119,7 +130,7 @@ class DeviceController extends Controller
             }
         } else {
             $delete = $device->delete();
-
+            
             if($delete) {
                 return redirect()->route('device.index')->with('success', 'Device deleted successfully!');
             } else {
