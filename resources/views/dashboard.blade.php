@@ -1,7 +1,7 @@
 @extends('template.dashboard')
 
 @section('title')
-    Welcome, 
+    Welcome, {{ auth()->user()->name }}
 @endsection
 
 @section('content')
