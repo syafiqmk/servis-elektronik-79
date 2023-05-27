@@ -100,4 +100,47 @@ class UserController extends Controller
             return redirect()->back()->with('danger', 'Fail to delete account!');
         }
     }
+
+    // Account settings
+    public function setting() {
+        return view('user.setting', [
+            'title' => 'Your account'
+        ]);
+    }
+
+    // Account update details
+    public function accDet(Request $request, User $user) {
+        $validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email'
+        ]);
+
+        $update = $user->update([
+            'name' => ucwords($validate['name']),
+            'email' => $validate['email']
+        ]);
+
+        if ($update) {
+            return redirect()->route('user.setting')->with('success', 'Account details updated successfully!');
+        } else {
+            return redirect()->route('user.setting')->with('danger', 'Fail to update account details!');
+        }
+    }
+
+    // Account update password
+    public function accPass(Request $request, User $user) {
+        $validate = $request->validate([
+            'password' => 'required|min:5'
+        ]);
+
+        $update = $user->update([
+            'password' => bcrypt($validate['password'])
+        ]);
+
+        if ($update) {
+            return redirect()->route('user.setting')->with('success', 'Password updated successfully!');
+        } else {
+            return redirect()->route('user.setting')->with('danger', 'Fail to update password!');
+        }
+    }
 }

@@ -54,7 +54,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                <a class="nav-link {{ Request::is('user/setting') ? 'active' : '' }}" href="{{ route('user.setting') }}">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 Settings
                 </a>

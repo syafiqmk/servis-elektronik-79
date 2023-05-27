@@ -57,6 +57,9 @@ Route::name('user.')->controller(UserController::class)->group(function() {
     Route::put('/user/edit/{user}/detail', 'update_detail')->name('updateDetail');
     Route::put('/user/edit/{user}/password', 'update_password')->name('updatePassword');
     Route::delete('/user/delete{user}', 'destroy')->name('delete');
+    Route::get('/user/setting', 'setting')->name('setting');
+    Route::put('/user/setting/{user}/detail', 'accDet')->name('accDet');
+    Route::put('/user/setting/{user}/password', 'accPass')->name('accPass');
 });
 
 // Device Route
