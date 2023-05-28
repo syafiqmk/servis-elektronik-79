@@ -26,7 +26,7 @@
             @else
                 @foreach ($categories as $data)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $categories->firstItem() + $loop->index }}</td>
                         <td>{{ $data->category }}</td>
                         <td>
                             <form action="{{ route('category.delete', $data->id) }}" method="post" id="delete">

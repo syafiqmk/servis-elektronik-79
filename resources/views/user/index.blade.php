@@ -25,7 +25,7 @@
             @else
                 @foreach ($users as $data)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $users->firstItem() + $loop->index }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
                         <td>
