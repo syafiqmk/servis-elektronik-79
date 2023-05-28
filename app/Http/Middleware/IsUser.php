@@ -18,6 +18,8 @@ class IsUser
         if (auth()->check()) {
             if (auth()->user()->role !== 'user') {
                 return redirect()->route('403');
+            } else {
+                return $next($request);
             }
         } else {
             return redirect()->route('auth.login');

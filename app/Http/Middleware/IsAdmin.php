@@ -18,6 +18,8 @@ class IsAdmin
         if(auth()->check()) {
             if(auth()->user()->role !== 'admin') {
                 return redirect()->route('403');
+            } else {
+                return $next($request);
             }
         } else {
             return redirect()->route('auth.login');
