@@ -17,4 +17,11 @@ class GeneralController extends Controller
             'title' => 'Dashboard',
         ]);
     }
+
+    // 403
+    public function forbidden() {
+        return view('403', [
+            'title' => '403 Forbidden'
+        ]);
+    }
 }

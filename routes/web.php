@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 // HomePage Route
 Route::get('/', [GeneralController::class, 'home'])->name('home');
+Route::get('/403', [GeneralController::class, 'forbidden'])->name('403');
 
 // Development Route
 Route::get('/dev/dashboard', [DevController::class, 'dashboard']);
