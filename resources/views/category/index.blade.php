@@ -4,9 +4,11 @@
     {{ $title }}
 @endsection
 
-@section('content')
-
+@section('side_title')
     <a href="{{ route('category.create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Add new category</a>
+@endsection
+
+@section('content')
     
     {{-- Table --}}
     <table class="table">
