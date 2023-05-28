@@ -9,6 +9,15 @@
 @endsection
 
 @section('content')
+
+    {{-- search --}}
+    <form action="{{ route('category.index') }}" method="GET">
+        <div class="input-group mb-3">
+            <input type="text" name="search" class="form-control" placeholder="Search" autocomplete="off" value="{{ request('search') }}">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <a href="{{ route('category.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
+        </div>
+    </form>
     
     {{-- Table --}}
     <table class="table">
@@ -44,7 +53,7 @@
         </tbody>
     </table>
 
-    {{ $categories->links() }}
+    {{ $categories->withQueryString()->links() }}
 
     <script>
         $('#delete').submit(function(e) {

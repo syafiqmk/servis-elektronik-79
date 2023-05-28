@@ -9,7 +9,14 @@ class CategoryController extends Controller
 {
     // Index
     public function index() {
-        $categories = DeviceCategory::paginate(5);
+
+        if(request()->search) {
+            $search = request()->search;
+        } else {
+            $search = '';
+        }
+
+        $categories = DeviceCategory::where('category', 'LIKE', '%'.$search.'%')->paginate(5);
 
         return view('category.index', [
             'title' => 'Device Category',
