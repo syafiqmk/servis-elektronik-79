@@ -9,7 +9,19 @@ class UserController extends Controller
 {
     // Index
     public function index() {
-        $users = User::where('role', '!=', 'admin')->paginate(10);
+
+        if(request()->search) {
+            $search = request()->search;
+        } else {
+            $search = '';
+        }
+
+        $users = User::where('role', '!=', 'admin')->
+            where(
+                function($query) use ($search) {
+                    return $query->where('name', 'LIKE', '%'.$search.'%')->orWhere('email', 'LIKE', '%'.$search.'%');
+                }
+            )->paginate(10);
 
         return view('user.index', [
             'title' => 'User Account',

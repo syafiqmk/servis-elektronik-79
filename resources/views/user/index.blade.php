@@ -9,6 +9,15 @@
 @endsection
     
 @section('content')
+
+    {{-- search --}}
+    <form action="{{ route('user.index') }}" method="GET">
+        <div class="input-group mb-3">
+            <input type="text" name="search" class="form-control" placeholder="Search" autocomplete="off" value="{{ request('search') }}">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+            <a href="{{ route('user.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
+        </div>
+    </form>
     
     <table class="table">
         <thead>
@@ -44,7 +53,7 @@
         </tbody>
     </table>
 
-    {{ $users->links() }}
+    {{ $users->withQueryString()->links() }}
 
     <script>
         $('#delete').submit(function(e) {
