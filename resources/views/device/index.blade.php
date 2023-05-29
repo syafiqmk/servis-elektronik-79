@@ -5,7 +5,9 @@
 @endsection
 
 @section('side_title')
-    <a href="{{ route('device.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add new device</a>
+    <div class="btn-group">
+        <a href="{{ route('device.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add new device</a>
+    </div>
 @endsection
 
 @section('content')
@@ -67,7 +69,7 @@
             </div>
             @endforeach
         </div>
-        {{ $devices->links() }}
+        {{ $devices->withQueryString()->links() }}
         @else
             <p>No entries found!</p>
         @endif

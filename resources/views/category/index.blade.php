@@ -5,7 +5,7 @@
 @endsection
 
 @section('side_title')
-    <div class="btn-group mb-3">
+    <div class="btn-group">
         <a href="{{ route('category.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add new category</a>
         <a href="{{ route('category.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
     </div>

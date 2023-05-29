@@ -5,7 +5,7 @@
 @endsection
 
 @section('side_title')
-    <div class="btn-group mb-3">
+    <div class="btn-group">
         <a href="{{ route('user.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Create new account</a>
         <a href="{{ route('user.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
     </div>
