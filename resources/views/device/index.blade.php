@@ -82,7 +82,7 @@
     @if ($devices->count() != 0)
     <div class="row">
         @foreach ($devices as $data)
-        <div class="col-md-4 col-sm-6 mb-3">
+        <div class="col-md-4 col-sm-12 mb-3">
             <div class="card h-100">
                 {{-- card header --}}
                 <div class="card-header">
@@ -116,8 +116,14 @@
                 {{-- card body --}}
                 <div class="card-body h-25">
                     {{-- time created --}}
-                        <p class="text-end">{{ $data->created_at->diffForHumans() }}</p>
+                        <p>{{ date('l, d M Y', strtotime($data->created_at)) }} ({{ $data->created_at->diffForHumans() }})</p>
                     {{-- end of time created --}}
+
+                    {{-- phone number --}}
+                    @if (!empty($data->phone_number))
+                        <p>Phone number : {{ $data->phone_number }}</p>
+                    @endif
+                    {{-- end of phone number --}}
 
                     {{-- price --}}
                     @if (!empty($data->price))
@@ -125,13 +131,18 @@
                     @endif
                     {{-- end of price --}}
 
-                    {{-- link --}}
+                </div>
+                {{-- end of card body --}}
+
+                {{-- card footer --}}
+                {{-- link --}}
+                <div class="card-footer">
                     <div class="text-end">
                         <a href="{{ route('device.show', $data->id) }}" class="btn btn-primary"><i class="fa-solid fa-book"></i> Detail</a>
                     </div>
-                    {{-- end of link --}}
                 </div>
-                {{-- end of card body --}}
+                {{-- end of link --}}
+                {{-- end of card footer --}}
             </div>
         </div>
         @endforeach
