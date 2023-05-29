@@ -18,40 +18,45 @@
             <a href="{{ route('user.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
         </div>
     </form>
+    {{-- end of search --}}
     
-    <table class="table">
-        <thead>
-            <th>No</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Action</th>
-        </thead>
-        <tbody>
-            @if ($users->count() == 0)
-                <tr>
-                    <td colspan="4" class="text-center">No entries found.</td>
-                </tr>
-            @else
-                @foreach ($users as $data)
+    {{-- table --}}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <th>No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                @if ($users->count() == 0)
                     <tr>
-                        <td>{{ $users->firstItem() + $loop->index }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->email }}</td>
-                        <td>
-                            <form action="{{ route('user.delete', $data->id) }}" method="post" id="delete">
-                                @csrf
-                                @method('DELETE')
-                                <div class="button-group">
-                                    <a href="{{ route('user.edit', $data->id) }}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
-                                </div>
-                            </form>
-                        </td>
+                        <td colspan="4" class="text-center">No entries found.</td>
                     </tr>
-                @endforeach
-            @endif
-        </tbody>
-    </table>
+                @else
+                    @foreach ($users as $data)
+                        <tr>
+                            <td>{{ $users->firstItem() + $loop->index }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>
+                                <form action="{{ route('user.delete', $data->id) }}" method="post" id="delete">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="button-group">
+                                        <a href="{{ route('user.edit', $data->id) }}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+            </tbody>
+        </table>
+    </div>
+    {{-- end of table --}}
 
     {{ $users->withQueryString()->links() }}
 
