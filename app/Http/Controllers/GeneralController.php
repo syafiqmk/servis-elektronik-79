@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Device;
 
 class GeneralController extends Controller
 {
@@ -13,8 +14,15 @@ class GeneralController extends Controller
 
     // Dashboard
     public function dashboard() {
+
+        $today = date('Y-m-d');
+        $devices = Device::all();
+        $device_today = Device::whereDate('created_at', '=', $today);
+        
         return view('dashboard', [
             'title' => 'Dashboard',
+            'devices' => $devices,
+            'device_today'=> $device_today
         ]);
     }
 
