@@ -10,6 +10,7 @@
         
         </ul>
 
+        @if (auth()->user()->role == 'admin')
         {{-- Master Data --}}
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
             <span>Master Data</span>
@@ -28,6 +29,7 @@
                 </a>
             </li>
         </ul>
+        @endif
 
         {{-- Device --}}
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
@@ -40,12 +42,44 @@
                 Add new device
                 </a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('device*') ? 'active' : '' }}" href="{{ route('device.index') }}">
-                <i class="fa-solid fa-desktop"></i>
+                <a class="nav-link text-primary" href="{{ route('device.index') }}">
+                <i class="fa-solid fa-house-laptop"></i>
                 All Device
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-primary" href="{{ route('device.index', ['status' => 'Baru']) }}">
+                <i class="fa-solid fa-desktop"></i>
+                Device (Baru)
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{{ route('device.index', ['status' => 'Proses']) }}">
+                <i class="fa-solid fa-desktop"></i>
+                Device (Proses)
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-info" href="{{ route('device.index', ['status' => 'Belum Diambil']) }}">
+                <i class="fa-solid fa-desktop"></i>
+                Device (Belum Diambil)
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-success" href="{{ route('device.index', ['status' => 'Sudah Diambil']) }}">
+                <i class="fa-solid fa-desktop"></i>
+                Device (Sudah Diambil)
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="{{ route('device.index', ['status' => 'Batal']) }}">
+                <i class="fa-solid fa-desktop"></i>
+                Device (Batal)
+                </a>
+            </li>
+            
         </ul>
 
         {{-- Account --}}
