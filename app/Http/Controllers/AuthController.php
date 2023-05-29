@@ -25,7 +25,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->route('dashboard');
         } else {
-            return redirect()->route('login')->with('danger', 'Fail to login! Check your email & password!');
+            return redirect()->route('auth.login')->with('danger', 'Fail to login! Check your email & password!');
         }
     }
 
