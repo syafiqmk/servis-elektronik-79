@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="row mb-3">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 mb-2">
             <div class="card">
                 <div class="card-header">
                     <h5>Total of devices</h5>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-6 col-sm-12 mb-2">
             <div class="card">
                 <div class="card-header">
                     <h5>Devices added today</h5>
