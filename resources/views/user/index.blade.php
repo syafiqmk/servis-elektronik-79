@@ -5,7 +5,10 @@
 @endsection
 
 @section('side_title')
-    <a href="{{ route('user.create') }}" class="btn btn-primary mb-3"><i class="fa-solid fa-plus"></i> Create new account</a>
+    <div class="btn-group mb-3">
+        <a href="{{ route('user.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Create new account</a>
+        <a href="{{ route('user.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
+    </div>
 @endsection
     
 @section('content')
@@ -15,7 +18,6 @@
         <div class="input-group mb-3">
             <input type="text" name="search" class="form-control" placeholder="Search" autocomplete="off" value="{{ request('search') }}">
             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-            <a href="{{ route('user.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
         </div>
     </form>
     {{-- end of search --}}
