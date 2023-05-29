@@ -12,11 +12,54 @@ class DeviceController extends Controller
 {
     // Index
     public function index() {
-        $devices = Device::orderBy('id', 'DESC')->paginate(9);
+
+        if(request()->search) {
+            $search = request()->search;
+        } else {
+            $search = '';
+        }
+
+        if(request()->date) {
+            $date = request()->date;
+        } else {
+            $date = '';
+        }
+
+        if(request()->category) {
+            // $category = DeviceCategory::firstWhere('category', '=', request()->category)->id;
+            $category = request()->category;
+        } else {
+            $category = '';
+        }
+
+        if(request()->status) {
+            $status = request()->status;
+        } else {
+            $status = '';
+        }
+
+
+        $devices = Device::where('created_at', '>=', $date)->
+            where(
+                function($query) use ($category) {
+                    if($category != '') {
+                        return $query->where('category_id', '=', $category);
+                    }
+                }
+            )->
+            where('status', 'LIKE', '%'.$status.'%')->
+            where(
+                function($query) use ($search) {
+                    return $query->where('phone_number', 'LIKE', '%'.$search.'%')->
+                    orWhere('detail', 'LIKE', '%'.$search.'%');
+                }
+            )->orderBy('id', 'DESC')->paginate(9);
+        $categories = DeviceCategory::all();
 
         return view('device.index', [
             'title' => 'Devices',
-            'devices' => $devices
+            'devices' => $devices,
+            'categories' => $categories
         ]);
     }
 

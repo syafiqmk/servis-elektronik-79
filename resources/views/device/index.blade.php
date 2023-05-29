@@ -7,10 +7,65 @@
 @section('side_title')
     <div class="btn-group">
         <a href="{{ route('device.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add new device</a>
+        <a href="{{ route('device.index') }}" class="btn btn-success"><i class="fa-solid fa-xmark"></i> Reset</a>
     </div>
 @endsection
 
 @section('content')
+
+    {{-- search --}}
+    <form action="{{ route('device.index') }}" method="get" class="mb-2">
+
+        <div class="input-group">
+            {{-- search input --}}
+            <div class="form-floating">
+                <input type="text" name="search" id="search" class="form-control mb-2" autocomplete="off" value="{{ request('search') }}">
+                <label for="search">Search</label>
+            </div>
+            {{-- end of search input --}}
+    
+            {{-- date input --}}
+            <div class="form-floating">
+                <input type="date" name="date" id="date" class="form-control mb-2" value="{{ request('date') }}">
+                <label for="date">Date</label>
+            </div>
+            {{-- end of date input --}}
+        </div>
+
+
+        <div class="input-group">
+
+            {{-- category select --}}
+            <div class="form-floating">
+                <select name="category" id="category" class="form-select">
+                    <option value="">All category</option>
+                    @foreach ($categories as $item)
+                        <option value="{{ $item->id }}" {{ ($item->id == request('category')) ? 'selected' : ''}}>{{ $item->category }}</option>
+                    @endforeach
+                </select>
+                <label for="category">Category</label>
+            </div>
+            {{-- end of category select --}}
+
+            {{-- status select --}}
+            <div class="form-floating">
+                <select name="status" id="status" class="form-select">
+                    <option value="">All status</option>
+                    <option value="Baru" {{ (request('status') == 'Baru') ? 'selected' : '' }}>Baru</option>
+                    <option value="Proses" {{ (request('status') == 'Proses') ? 'selected' : '' }}>Proses</option>
+                    <option value="Belum Diambil" {{ (request('status') == 'Belum Diambil') ? 'selected' : '' }}>Belum Diambil</option>
+                    <option value="Sudah Diambil" {{ (request('status') == 'Sudah Diambil') ? 'selected' : '' }}>Sudah Diambil</option>
+                    <option value="Batal" {{ (request('status') == 'Batal') ? 'selected' : '' }}>Batal</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+            {{-- end of status select --}}
+
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        </div>
+    </form>
+    {{-- end of search --}}
+
     <div class="container">
         @if ($devices->count() != 0)
         <div class="row">
