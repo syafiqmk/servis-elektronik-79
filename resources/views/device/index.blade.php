@@ -62,6 +62,16 @@
             </div>
             {{-- end of status select --}}
 
+            {{-- sort select --}}
+            <div class="form-floating">
+                <select name="sort" id="sort" class="form-select">
+                    <option value="DESC" {{ (request('sort') == 'DESC') ? 'selected' : '' }}>Terbaru</option>
+                    <option value="ASC" {{ (request('sort') == 'ASC') ? 'selected' : '' }}>Terlama</option>
+                </select>
+                <label for="sort">Sort</label>
+            </div>
+            {{-- end of sort select --}}
+
             <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
         </div>
     </form>

@@ -38,6 +38,12 @@ class DeviceController extends Controller
             $status = '';
         }
 
+        if(request()->sort) {
+            $sort = request()->sort;
+        } else {
+            $sort = 'DESC';
+        }
+
 
         $devices = Device::where('created_at', '>=', $date)->
             where(
@@ -53,7 +59,7 @@ class DeviceController extends Controller
                     return $query->where('phone_number', 'LIKE', '%'.$search.'%')->
                     orWhere('detail', 'LIKE', '%'.$search.'%');
                 }
-            )->orderBy('id', 'DESC')->paginate(9);
+            )->orderBy('id', $sort)->paginate(9);
         $categories = DeviceCategory::all();
 
         return view('device.index', [
