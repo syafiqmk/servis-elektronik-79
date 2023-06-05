@@ -10,6 +10,7 @@
         @method('DELETE')
         <div class="btn-group">
             <a href="{{ route('device.index') }}" class="btn btn-success"><i class="fa-solid fa-chevron-left"></i> Back</a>
+            <a href="{{ route('device.edit', $device->id) }}" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
             <a href="{{ route('transaction.create', $device->id) }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New transaction</a>
             <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
         </div>
@@ -59,21 +60,6 @@
                 <div class="mb-3">
                     <b>Phone number</b>
                     <p>{{ (empty($device->phone_number)) ? '-' : $device->phone_number }}</p>
-
-                    <form action="{{ route('device.updatePhone', $device->id) }}" method="post">
-                        @csrf
-                        @method('PUT')
-
-                        <div class="input-group">
-                            <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" autocomplete="off" value="{{ old('phone') }}">
-                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-                        </div>
-                        @error('phone')
-                            <div class="invalid-feedback mb-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </form>
                 </div>
 
                 <div class="mb-3">

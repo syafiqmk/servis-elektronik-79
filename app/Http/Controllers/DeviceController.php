@@ -124,6 +124,57 @@ class DeviceController extends Controller
         ]);
     }
 
+    // Edit
+    public function edit(Device $device) {
+        $categories = DeviceCategory::all();
+
+        return view('device.edit', [
+            'title' => 'Edit Device',
+            'device' => $device,
+            'categories' => $categories
+        ]);
+    }
+
+    // Update
+    public function update(Request $request, Device $device) {
+        $validate = $request->validate([
+            'image' => 'image|file|nullable',
+            'category' => 'required',
+            'phone' => 'numeric|nullable',
+            'detail' => 'required'
+        ]);
+
+        if (empty($validate['image'])) {
+            $file = NULL;
+        } else {
+            $file = $validate['image'];
+        }
+        $file_name = $device->image;
+
+        if ($request->file('image')) {
+            if(!empty($device->image)) {
+                File::delete(public_path('image/device/'.$device->image));
+            }
+
+            $file_name = $file->getClientOriginalName();
+            $file->move('image/device', $file_name);
+        }
+
+        $update = $device->update([
+            'phone_number' => $validate['phone'],
+            'detail' => $validate['detail'],
+            'image' => $file_name,
+            'status' => 'Baru',
+            'category_id' => $validate['category'],
+        ]);
+
+        if ($update) {
+            return redirect()->route('device.show', $device->id)->with('success', 'Device edited succesfully!');
+        } else {
+            return redirect()->route('device.show', $device->id)->with('danger', 'Fail to edit device!');
+        }
+    }
+
     // Update price
     public function price_update(Request $request, Device $device) {
         $validate = $request->validate([
@@ -141,22 +192,6 @@ class DeviceController extends Controller
         }
     }
 
-    // Update phone number
-    public function phone_update(Request $request, Device $device) {
-        $validate = $request->validate([
-            'phone' => 'required|numeric'
-        ]);
-
-        $update = $device->update([
-            'phone_number' => $validate['phone']
-        ]);
-
-        if($update) {
-            return redirect()->route('device.show', $device->id)->with('success', 'Phone number updated successfully!');
-        } else {
-            return redirect()->route('device.show', $device->id)->with('danger', 'Fail to update phone number!');
-        }
-    }
 
     // Delete
     public function destroy(Device $device) {

@@ -78,8 +78,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/device/create', 'create')->name('create');
         Route::post('/device/create', 'store')->name('store');
         Route::get('/device/{device}', 'show')->name('show');
+        Route::get('/device/{device}/edit', 'edit')->name('edit');
+        Route::put('/device/{device}/edit', 'update')->name('update');
         Route::put('/device/{device}/price', 'price_update')->name('updatePrice');
-        Route::put('/device/{device}/phone', 'phone_update')->name('updatePhone');
         Route::delete('/device/{device}/delete', 'destroy')->name('destroy');
     });
     
